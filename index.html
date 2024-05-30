@@ -1,17 +1,40 @@
-<!--Made by oHeckGage on GitHub or Gage#3758 on Discord
-Please contact me for questions or visit the Ruffle wiki (https://www.ruffle.rs)-->
-<html>
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BTD 5 by oHeckGage</title>
-  </head>
-  <body>
     <style>
-      body {
-        background-color: #6a859c
-      }
+        body {
+            background-color: #6a859c;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        #ruffle-container {
+            width: 80%;
+            height: 80%;
+        }
     </style>
+</head>
+<body>
     <h3>Please Note: This will NOT work until Ruffle adds support for AS3</h3>
-    <embed src="btd5.swf" width="100%" height="100%">
+    <div id="ruffle-container">
+        <embed src="btd5.swf" width="100%" height="100%">
+    </div>
     <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
-  </body>
+    <script>
+        window.RufflePlayer = window.RufflePlayer || {};
+        window.addEventListener("DOMContentLoaded", (event) => {
+            const ruffle = window.RufflePlayer.newest();
+            const container = document.getElementById("ruffle-container");
+            const player = ruffle.createPlayer();
+            container.appendChild(player);
+            player.load("btd5.swf");
+        });
+    </script>
+</body>
 </html>
